@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -23,9 +24,16 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        loader:'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outpath: 'images/',
+          publicPath: 'images/',
+          emitFile: true,
+          esModule: false,
+        },
         type: 'asset/resource',
       },
     ],
   },
-  
 };
